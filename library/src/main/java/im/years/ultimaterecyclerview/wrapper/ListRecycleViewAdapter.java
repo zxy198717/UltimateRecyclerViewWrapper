@@ -75,17 +75,7 @@ public abstract class ListRecycleViewAdapter<VH extends RecyclerViewHolder, T> e
 
     @Override
     public RecyclerView.ViewHolder getViewHolder(View view) {
-        try {
-            return (VH) viewHolderConstructor.newInstance(view);
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-
-        return null;
+        return new RecyclerViewHolder(view);
     }
 
     @Override
