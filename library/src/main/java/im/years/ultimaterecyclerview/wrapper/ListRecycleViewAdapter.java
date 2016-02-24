@@ -19,11 +19,16 @@ public abstract class ListRecycleViewAdapter<VH extends RecyclerViewHolder, T> e
     private ArrayList<T> items;
     private Context context;
     private Class<VH> viewHolderClass;
-
+    private Constructor viewHolderConstructor;
     public ListRecycleViewAdapter(Context context, ArrayList<T> items, Class<VH> cls) {
         this.context = context;
         this.items = items;
-        this.viewHolderClass = cls;
+
+        try {
+            viewHolderConstructor = cls.getConstructor(new Class[]{View.class});
+        } catch (Exception exc) {
+            exc.printStackTrace();
+        }
     }
 
     public T getItem(int position) {
@@ -56,10 +61,7 @@ public abstract class ListRecycleViewAdapter<VH extends RecyclerViewHolder, T> e
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(itemViewRes(), viewGroup, false);
         try {
-            Constructor con = viewHolderClass.getConstructor(new Class[]{View.class});
-            return (VH) con.newInstance(view);
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
+            return (VH) viewHolderConstructor.newInstance(view);
         } catch (InvocationTargetException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {
@@ -74,10 +76,7 @@ public abstract class ListRecycleViewAdapter<VH extends RecyclerViewHolder, T> e
     @Override
     public RecyclerView.ViewHolder getViewHolder(View view) {
         try {
-            Constructor con = viewHolderClass.getConstructor(new Class[]{View.class});
-            return (VH) con.newInstance(view);
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
+            return (VH) viewHolderConstructor.newInstance(view);
         } catch (InvocationTargetException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {
