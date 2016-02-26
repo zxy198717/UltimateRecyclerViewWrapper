@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
-        Fragment fragment = new HelloFragment();
+        Fragment fragment = new SampleListFragment();
         fragment.setArguments(getIntent().getExtras());
         transaction.replace(R.id.content_fragment, fragment);
         transaction.commit();
