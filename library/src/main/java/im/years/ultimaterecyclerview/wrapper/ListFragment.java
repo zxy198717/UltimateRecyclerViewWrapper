@@ -23,7 +23,7 @@ import im.years.ultimaterecyclerview.R;
 
 public abstract class ListFragment extends Fragment {
 
-    UltimateRecyclerView recyclerView;
+    protected UltimateRecyclerView recyclerView;
     LinearLayout listHeaderLayout;
     RecycleViewAdapter adapter;
     Integer currentPage = 0;
