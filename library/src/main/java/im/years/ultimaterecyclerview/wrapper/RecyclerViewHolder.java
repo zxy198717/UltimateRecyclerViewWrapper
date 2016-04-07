@@ -24,8 +24,17 @@ public class RecyclerViewHolder extends UltimateRecyclerviewViewHolder implement
                 public void onClick(View v) {
                     if (RecyclerViewHolder.this.itemClickListener != null) {
                         RecyclerViewHolder.this.itemClickListener.onItemClick(itemView, getAdapterPosition());
-                        //RecyclerViewHolder.this.itemClickListener.onItemViewClick(v, getAdapterPosition());
                     }
+                }
+            });
+
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    if (RecyclerViewHolder.this.itemClickListener != null) {
+                        RecyclerViewHolder.this.itemClickListener.onItemLongClick(itemView, getAdapterPosition());
+                    }
+                    return true;
                 }
             });
         }
@@ -40,7 +49,7 @@ public class RecyclerViewHolder extends UltimateRecyclerviewViewHolder implement
 
     public interface OnItemClickListener {
         void onItemClick(View clickedView, int position);
-
+        void onItemLongClick(View clickedView, int position);
         void onItemViewClick(View clickedItemView, int position);
     }
 }

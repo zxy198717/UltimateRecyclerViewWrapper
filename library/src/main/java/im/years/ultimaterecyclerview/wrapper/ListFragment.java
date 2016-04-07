@@ -62,6 +62,12 @@ public abstract class ListFragment extends Fragment {
         this.adapter = adapter;
         recyclerView.setAdapter(adapter);
         adapter.setItemClickListener(new RecyclerViewHolder.OnItemClickListener() {
+
+            @Override
+            public void onItemLongClick(View clickedView, int position) {
+                ListFragment.this.onItemLongClick(clickedView, position);
+            }
+
             @Override
             public void onItemClick(View clickedView, int position) {
                 ListFragment.this.onItemClick(clickedView, position);
@@ -187,6 +193,9 @@ public abstract class ListFragment extends Fragment {
     }
 
     protected void onItemClick(View clickedView, int position) {
+    }
+
+    protected void onItemLongClick(View clickedView, int position) {
     }
 
     protected void onItemViewClick(View clickedItemView, int position) {
