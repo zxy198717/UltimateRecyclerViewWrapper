@@ -206,6 +206,13 @@ public abstract class ListFragment extends Fragment {
         llFooter.setVisibility(View.VISIBLE);
     }
 
+    protected void setFooterView(View view) {
+        isLoadMoreEnabled = false;
+        recyclerView.disableLoadmore();
+        getAdapter().setCustomLoadMoreView(view);
+        getAdapter().notifyDataSetChanged();
+    }
+
     protected void setHeaderVisiable(boolean isVisiable) {
         currentHeaderView.setVisibility(isVisiable ? View.VISIBLE : View.GONE);
     }
