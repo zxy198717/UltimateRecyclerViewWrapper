@@ -1,5 +1,6 @@
 package years.im.ultimaterecyclerview;
 
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,7 +21,7 @@ public class SampleListFragment extends BriefListFragment<ContentMock> {
     @Override
     protected void initViews() {
         super.initViews();
-
+        enableLoadMore();
         ArrayList<ContentMock> contentMocks = getItems();
 
         ContentMock contentMock = new ContentMock("未命名", "ddddddddddd");
@@ -33,6 +34,10 @@ public class SampleListFragment extends BriefListFragment<ContentMock> {
         contentMocks.add(contentMock);
         contentMock = new ContentMock("ceshiaa", "ddddddddddddddd");
         contentMocks.add(contentMock);
+
+        View footer = LayoutInflater.from(getContext()).inflate(R.layout.view_footer, null);
+
+        setFooterView(footer);
 
         reloadData();
     }

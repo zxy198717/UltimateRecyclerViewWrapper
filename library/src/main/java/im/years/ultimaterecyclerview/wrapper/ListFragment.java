@@ -208,8 +208,7 @@ public abstract class ListFragment extends Fragment {
 
     protected void setFooterView(View view) {
         isLoadMoreEnabled = false;
-        recyclerView.disableLoadmore();
-        getAdapter().setCustomLoadMoreView(view);
+        recyclerView.reenableLoadmore(view);
         getAdapter().notifyDataSetChanged();
     }
 

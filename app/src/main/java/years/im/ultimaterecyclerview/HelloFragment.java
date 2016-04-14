@@ -30,7 +30,10 @@ public class HelloFragment extends ListFragment {
         super.initViews();
 
         enableRefresh();
-        enableLoadMore();
+        //enableLoadMore();
+
+
+
 
         setListDivider(R.color.list_divider);
 
@@ -45,9 +48,45 @@ public class HelloFragment extends ListFragment {
         contentMocks.add(contentMock);
         contentMock = new ContentMock("ceshiaa", "ddddddddddddddd");
         contentMocks.add(contentMock);
+        contentMock = new ContentMock("ceshiaa", "ddddddddddddddd");
+        contentMocks.add(contentMock);
+        contentMock = new ContentMock("ceshiaa", "ddddddddddddddd");
+        contentMocks.add(contentMock);
+        contentMock = new ContentMock("ceshiaa", "ddddddddddddddd");
+        contentMocks.add(contentMock);
+        contentMock = new ContentMock("ceshiaa", "ddddddddddddddd");
+        contentMocks.add(contentMock);
+        contentMock = new ContentMock("ceshiaa", "ddddddddddddddd");
+        contentMocks.add(contentMock);
+        contentMock = new ContentMock("ceshiaa", "ddddddddddddddd");
+        contentMocks.add(contentMock);
+        contentMock = new ContentMock("ceshiaa", "ddddddddddddddd");
+        contentMocks.add(contentMock);
+        contentMock = new ContentMock("ceshiaa", "ddddddddddddddd");
+        contentMocks.add(contentMock);
+        contentMock = new ContentMock("ceshiaa", "ddddddddddddddd");
+        contentMocks.add(contentMock);
+        contentMock = new ContentMock("ceshiaa", "ddddddddddddddd");
+        contentMocks.add(contentMock);
+        contentMock = new ContentMock("ceshiaa", "ddddddddddddddd");
+        contentMocks.add(contentMock);
+        contentMock = new ContentMock("ceshiaa", "ddddddddddddddd");
+        contentMocks.add(contentMock);
+        contentMock = new ContentMock("ceshiaa", "ddddddddddddddd");
+        contentMocks.add(contentMock);
+        contentMock = new ContentMock("ceshiaa", "ddddddddddddddd");
+        contentMocks.add(contentMock);
+        contentMock = new ContentMock("ceshiaa", "ddddddddddddddd");
+        contentMocks.add(contentMock);
+        contentMock = new ContentMock("ceshiaa", "ddddddddddddddd");
+        contentMocks.add(contentMock);
 
         helloAdapter = new HelloAdapter(getContext(), contentMocks, ViewHolder.class);
         setAdapter(helloAdapter);
+
+        View footer = LayoutInflater.from(getContext()).inflate(R.layout.view_footer, null);
+
+        setFooterView(footer);
     }
 
     static class ViewHolder extends RecyclerViewHolder {
