@@ -165,10 +165,18 @@ public abstract class ListFragment extends Fragment {
                     marginTop += currentHeaderView.getHeight();
                 }
 
-                RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) listEmptyView.getLayoutParams();
-                lp.topMargin = marginTop;
-                listEmptyView.setVisibility(View.VISIBLE);
-                listEmptyView.setLayoutParams(lp);
+                if (listEmptyView.getLayoutParams() instanceof  RelativeLayout.LayoutParams) {
+                    RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) listEmptyView.getLayoutParams();
+                    lp.topMargin = marginTop;
+                    listEmptyView.setVisibility(View.VISIBLE);
+                    listEmptyView.setLayoutParams(lp);
+                } else if (listEmptyView.getLayoutParams() instanceof  LinearLayout.LayoutParams) {
+                    LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) listEmptyView.getLayoutParams();
+                    lp.topMargin = marginTop;
+                    listEmptyView.setVisibility(View.VISIBLE);
+                    listEmptyView.setLayoutParams(lp);
+                }
+
             } else {
                 listEmptyView.setVisibility(View.GONE);
             }
