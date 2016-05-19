@@ -1,6 +1,7 @@
 package im.years.ultimaterecyclerview.wrapper;
 
 import android.content.Context;
+import android.support.annotation.ColorRes;
 
 import java.util.ArrayList;
 
@@ -33,6 +34,10 @@ public abstract class SampleListFragment<VH extends RecyclerViewHolder, T> exten
         sampleListAdapter.notifyDataSetChanged();
     }
 
+    protected @ColorRes int itemViewBackground() {
+        return 0;
+    }
+
     class SampleListAdapter extends ListRecycleViewAdapter<VH, T>{
 
         public SampleListAdapter(Context context, ArrayList<T> items, Class<VH> cls) {
@@ -42,6 +47,11 @@ public abstract class SampleListFragment<VH extends RecyclerViewHolder, T> exten
         @Override
         public int itemViewRes() {
             return SampleListFragment.this.itemViewRes();
+        }
+
+        @Override
+        protected int itemViewBackground() {
+            return SampleListFragment.this.itemViewBackground();
         }
 
         @Override
