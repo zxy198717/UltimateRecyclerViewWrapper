@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -54,12 +55,24 @@ public abstract class ListRecycleViewAdapter<VH extends RecyclerViewHolder, T> e
     }
 
     public abstract int itemViewRes();
+    protected int itemViewBackground() {
+        return 0;
+    }
     public abstract void onBindViewItemHolder(VH holder, T item, int position);
 
     @Override
     public VH onCreateItemViewHolder(ViewGroup viewGroup) {
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(itemViewRes(), viewGroup, false);
+
+        if (itemViewBackground() > 0) {
+            LinearLayout linearLayout = new LinearLayout(viewGroup.getContext());
+            linearLayout.setBackgroundColor(viewGroup.getContext().getResources().getColor(itemViewBackground()));
+            linearLayout.addView(view);
+
+            view = linearLayout;
+        }
+
         try {
             return (VH) viewHolderConstructor.newInstance(view);
         } catch (InvocationTargetException e) {
