@@ -69,7 +69,7 @@ public abstract class ListRecycleViewAdapter<VH extends RecyclerViewHolder, T> e
             LinearLayout linearLayout = new LinearLayout(viewGroup.getContext());
             linearLayout.setBackgroundColor(viewGroup.getContext().getResources().getColor(itemViewBackground()));
             linearLayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            linearLayout.addView(view);
+            linearLayout.addView(view, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
             view = linearLayout;
         }
