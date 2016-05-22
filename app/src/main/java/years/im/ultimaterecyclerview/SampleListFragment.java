@@ -21,7 +21,7 @@ public class SampleListFragment extends BriefListFragment<ContentMock> {
     @Override
     protected void initViews() {
         super.initViews();
-        enableLoadMore();
+        //enableLoadMore();
         ArrayList<ContentMock> contentMocks = getItems();
 
         ContentMock contentMock = new ContentMock("未命名", "ddddddddddd");
@@ -36,10 +36,7 @@ public class SampleListFragment extends BriefListFragment<ContentMock> {
         contentMocks.add(contentMock);
 
         View footer = LayoutInflater.from(getContext()).inflate(R.layout.view_footer, null);
-
         setFooterView(footer);
-
-        reloadData();
     }
 
     @Override

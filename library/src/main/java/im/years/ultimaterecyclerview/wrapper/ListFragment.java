@@ -80,7 +80,7 @@ public abstract class ListFragment extends Fragment {
         });
     }
 
-    protected UltimateViewAdapter getAdapter() {
+    protected RecycleViewAdapter getAdapter() {
         return this.adapter;
     }
 
@@ -216,8 +216,8 @@ public abstract class ListFragment extends Fragment {
 
     protected void setFooterView(View view) {
         isLoadMoreEnabled = false;
-        recyclerView.reenableLoadmore(view);
-        getAdapter().notifyDataSetChanged();
+        recyclerView.disableLoadmore();
+        getAdapter().setFooterView(view);
     }
 
     protected void setHeaderVisiable(boolean isVisiable) {
