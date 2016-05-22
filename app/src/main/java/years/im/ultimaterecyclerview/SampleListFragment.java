@@ -21,7 +21,6 @@ public class SampleListFragment extends BriefListFragment<ContentMock> {
     @Override
     protected void initViews() {
         super.initViews();
-        //enableLoadMore();
         ArrayList<ContentMock> contentMocks = getItems();
 
         ContentMock contentMock = new ContentMock("未命名", "ddddddddddd");
