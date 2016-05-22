@@ -216,8 +216,11 @@ public abstract class ListFragment extends Fragment {
 
     protected void setFooterView(View view) {
         isLoadMoreEnabled = false;
-        recyclerView.disableLoadmore();
         getAdapter().setFooterView(view);
+    }
+
+    protected void removeFooterView() {
+        getAdapter().removeFooter();
     }
 
     protected void setHeaderVisiable(boolean isVisiable) {
