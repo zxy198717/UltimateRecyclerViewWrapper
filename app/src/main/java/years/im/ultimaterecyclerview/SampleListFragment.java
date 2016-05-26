@@ -8,6 +8,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import im.years.ultimaterecyclerview.wrapper.BriefListFragment;
+import im.years.ultimaterecyclerview.wrapper.EasyListFragment;
 import im.years.ultimaterecyclerview.wrapper.ListFragment;
 import im.years.ultimaterecyclerview.wrapper.RecyclerViewHolder;
 import im.years.ultimaterecyclerview.wrapper.adapter.SparseArrayViewHolder;
@@ -15,8 +16,25 @@ import im.years.ultimaterecyclerview.wrapper.adapter.SparseArrayViewHolder;
 /**
  * Created by alvinzeng on 2/26/16.
  */
-public class SampleListFragment extends BriefListFragment<ContentMock> {
+public class SampleListFragment extends EasyListFragment<ContentMock, ListItemView> {
 
+
+    @Override
+    public void onBindViewItemHolder(ListItemView view, ContentMock item, int position) {
+        view.setText(item.title);
+        listeningClick(view.textView, position);
+        //view.setOnClickListener(get);
+    }
+
+    @Override
+    protected Class viewClass() {
+        return ListItemView.class;
+    }
+
+    @Override
+    protected int itemViewBackground() {
+        return R.color.bg;
+    }
 
     @Override
     protected void initViews() {
@@ -36,17 +54,6 @@ public class SampleListFragment extends BriefListFragment<ContentMock> {
 
         View footer = LayoutInflater.from(getContext()).inflate(R.layout.view_footer, null);
         setFooterView(footer);
-    }
-
-    @Override
-    protected int itemViewRes() {
-        return R.layout.item_hello_list;
-    }
-
-    @Override
-    public void onBindViewItemHolder(SparseArrayViewHolder holder, ContentMock item, int position) {
-        holder.setText(R.id.textView, item.title);
-        holder.listeningClick(R.id.textView);
     }
 
     @Override
