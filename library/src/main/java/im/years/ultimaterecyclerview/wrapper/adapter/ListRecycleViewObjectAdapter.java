@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 import im.years.ultimaterecyclerview.wrapper.RecycleViewAdapter;
@@ -72,6 +73,14 @@ public abstract class ListRecycleViewObjectAdapter<T, V extends View> extends Re
         View realItemView = null;
         try {
             realItemView = (View) viewConstructor.newInstance(viewGroup.getContext());
+            try {
+                //For androidannotations
+                Method method = realItemView.getClass().getMethod("onFinishInflate");
+                method.setAccessible(true);
+                method.invoke(realItemView);
+            } catch (NoSuchMethodException e) {
+                //e.printStackTrace();
+            }
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -91,7 +100,7 @@ public abstract class ListRecycleViewObjectAdapter<T, V extends View> extends Re
             view = linearLayout;
         }
 
-        view.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.MATCH_PARENT));
+        view.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT));
 
         return new ViewHolder(realItemView, view);
     }
