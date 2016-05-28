@@ -79,7 +79,6 @@ public abstract class ListRecycleViewObjectAdapter<T, V extends View> extends Re
                 method.setAccessible(true);
                 method.invoke(realItemView);
             } catch (NoSuchMethodException e) {
-                //e.printStackTrace();
             }
         } catch (InstantiationException e) {
             e.printStackTrace();
