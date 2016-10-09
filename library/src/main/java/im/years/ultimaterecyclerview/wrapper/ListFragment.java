@@ -41,7 +41,7 @@ public abstract class ListFragment extends Fragment {
 
         recyclerView = (UltimateRecyclerView) v.findViewById(R.id.recyclerView);
         listHeaderLayout = (LinearLayout) v.findViewById(R.id.listHeaderLayout);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+        recyclerView.setLayoutManager(new WrapContentLinearLayoutManager(this.getActivity()));
         customLoadMoreView = (RelativeLayout) inflater.inflate(R.layout.az_view_custom_bottom_progressbar, null);
         llFooter = (LinearLayout) v.findViewById(R.id.listFooterLayout);
         listEmptyView = (ListEmptyView) v.findViewById(R.id.listEmptyView);
